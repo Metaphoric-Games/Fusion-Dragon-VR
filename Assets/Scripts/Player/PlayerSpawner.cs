@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
-using System;
 
 public class PlayerSpawner : Fusion.Behaviour
 {
@@ -12,17 +11,6 @@ public class PlayerSpawner : Fusion.Behaviour
         var events = GetComponent<NetworkEvents>();
         events.PlayerJoined.AddListener( PlayerJoined );
         events.OnConnectedToServer.AddListener( OnServerJoined );
-        events.PlayerLeft.AddListener(PlayerLeft);
-    }
-
-    private void PlayerLeft(NetworkRunner runner, PlayerRef player)
-    {
-        Debug.Log($"Player {player} has left");
-
-        if (false == runner.IsClient)
-        {
-            Debug.Log("The host has left");
-        }
     }
 
     public void OnServerJoined( NetworkRunner runner )

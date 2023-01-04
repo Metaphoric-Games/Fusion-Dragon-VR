@@ -72,9 +72,6 @@ public class ConnectionHelper : MonoBehaviour
         case GameMode.Shared:
             _debugStart.StartSharedClient();
             break;
-        case GameMode.AutoHostOrClient:
-                _debugStart.StartAutoClient();
-            break;
         }
     }
 }
