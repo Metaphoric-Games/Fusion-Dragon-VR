@@ -302,11 +302,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _GUISkin: {fileID: 11400000, guid: e59b35dfeb4b6f54e9b2791b2a40a510, type: 2}
-  _autoSpawnXR: 1
+  _autoSpawnXR: 0
   _XRRig: {fileID: 4651698269137154868, guid: 11fb331bc0588d34b867a8ac7e6c249d, type: 3}
   _autoSpawnPC: 0
   _PCRig: {fileID: 4651698269137154868, guid: cce765864772b4d49abd266626c2eb23, type: 3}
-  m_AddAsChild: 1
 --- !u!114 &4945582564059790120
 MonoBehaviour:
   m_ObjectHideFlags: 0

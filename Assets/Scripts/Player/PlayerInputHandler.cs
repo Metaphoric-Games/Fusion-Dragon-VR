@@ -14,24 +14,16 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void Awake()
     {
-        //if( _relativeTo == null )
-        //{
-        //    _relativeTo = transform.parent;
-        //}
+        if( _relativeTo == null )
+        {
+            _relativeTo = transform.parent;
+        }
     }
 
     void Start()
     {
-        
-    }
-
-    public void SetRelativeTo(Transform relativeTo)
-    {
-        _relativeTo = relativeTo;
-
-        //var networkedParent = GetComponentInParent<NetworkObject>();
-        var networkedParent = relativeTo.GetComponent<NetworkObject>();
-        if (networkedParent == null || networkedParent.Runner == null)
+        var networkedParent = GetComponentInParent<NetworkObject>();
+        if( networkedParent == null || networkedParent.Runner == null )
         {
             return;
         }
@@ -39,13 +31,13 @@ public class PlayerInputHandler : MonoBehaviour
         var runner = networkedParent.Runner;
         var events = runner.GetComponent<NetworkEvents>();
 
-        events.OnInput.AddListener(OnInput);
+        events.OnInput.AddListener( OnInput );
 
         var player = networkedParent.GetComponent<Player>();
-        if (player != null)
+        if( player != null )
         {
-            player._leftHand.SetLocalController(LeftController);
-            player._rightHand.SetLocalController(RightController);
+            player._leftHand.SetLocalController( LeftController );
+            player._rightHand.SetLocalController( RightController );
         }
     }
 

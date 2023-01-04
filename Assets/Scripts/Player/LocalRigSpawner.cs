@@ -10,7 +10,6 @@ public class LocalRigSpawner : SimulationBehaviour, ISpawned
     [Space]
     [SerializeField] bool _autoSpawnPC = false;
     [SerializeField] PlayerInputHandler _PCRig;
-    [SerializeField] bool m_AddAsChild = false;
 
     static bool s_SavedSpawnSelectionXR = false;
     static bool s_SavedSpawnSelectionPC = false;
@@ -70,23 +69,9 @@ public class LocalRigSpawner : SimulationBehaviour, ISpawned
         ObserverCamera.DisableObserverCamera();
 
         _showPlayerSpawnChoice = false;
-
-        var rig = Instantiate(prefab);
-        rig.transform.position = this.transform.position;
-        rig.transform.rotation = this.transform.rotation;
-
-        if (m_AddAsChild)
-        {
-            rig.transform.SetParent(this.transform); 
-            rig.transform.localPosition = Vector3.zero;
-            rig.transform.localRotation = Quaternion.identity;
-        }
-
-        rig.GetComponent<PlayerInputHandler>()?.SetRelativeTo(this.transform);
-
-        //var rig = Instantiate( prefab, transform );
-        //rig.transform.localPosition = Vector3.zero;
-        //rig.transform.localRotation = Quaternion.identity;
+        var rig = Instantiate( prefab, transform );
+        rig.transform.localPosition = Vector3.zero;
+        rig.transform.localRotation = Quaternion.identity;
 
         this.enabled = false;
     }
